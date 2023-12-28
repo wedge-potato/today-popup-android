@@ -1,4 +1,4 @@
-package com.wedge.todaypopup.ui.theme
+package com.wedge.todaypopup.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
