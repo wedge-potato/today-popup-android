@@ -35,10 +35,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.wedge.drawingtoyou.core.navigation.navigator.TodayPopupNavigator
 import com.wedge.todaypopup.R
 import com.wedge.todaypopup.core.domain.model.PopupInfo
+import com.wedge.todaypopup.core.navigation.TodayPopupScreens
 import com.wedge.todaypopup.core.navigation.navigator.TodayPopupNavigatorImpl
 import com.wedge.todaypopup.core.ui.component.ClipButton
 import com.wedge.todaypopup.core.ui.component.PopupCardView
 import com.wedge.todaypopup.core.ui.theme.ThemeColors
+import com.wedge.todaypopup.core.ui.util.clickableSingle
 
 @Composable
 fun HomeScreen(
@@ -60,7 +62,9 @@ fun HomeScreen(
 		HomeTopBar(
 			themeColor = themeColor,
 			darkTheme = darkTheme
-		)
+		) {
+			navigator.navigate(TodayPopupScreens.Setting.name)
+		}
 		HomeOptionRow(
 			darkTheme = darkTheme
 		)
@@ -146,7 +150,8 @@ private fun FilterText(
 @Composable
 private fun HomeTopBar(
 	themeColor: ThemeColors,
-	darkTheme: Boolean
+	darkTheme: Boolean,
+	navigateToSetting: () -> Unit
 ) {
 	Row(
 		modifier = Modifier
@@ -166,7 +171,11 @@ private fun HomeTopBar(
 			)
 		)
 		Image(
-			modifier = Modifier.size(24.dp),
+			modifier = Modifier
+				.size(24.dp)
+				.clickableSingle {
+					navigateToSetting()
+				},
 			painter = painterResource(id = R.drawable.ic_setting_white),
 			contentDescription = "ic_setting_white",
 			colorFilter = ColorFilter.tint(

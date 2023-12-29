@@ -9,6 +9,8 @@ sealed class TodayPopupScreens(
 	val name: String = route.appendArguments(navArguments)
 
 	object Home : TodayPopupScreens("home")
+
+	object Setting : TodayPopupScreens("setting")
 }
 
 private fun String.appendArguments(navArguments: List<NamedNavArgument>): String {
