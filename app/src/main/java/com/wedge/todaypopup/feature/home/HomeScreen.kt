@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -68,11 +67,12 @@ fun HomeScreen(
 		HomeOptionRow(
 			darkTheme = darkTheme
 		)
-		Spacer(modifier = Modifier.height(6.dp))
 		HomePopupContent(
 			popupInfoList = viewModel.popupInfoList,
 			darkTheme = darkTheme
-		)
+		) {
+			navigator.navigate(TodayPopupScreens.PopupDetail.name)
+		}
 	}
 }
 
@@ -80,10 +80,12 @@ fun HomeScreen(
 private fun HomePopupContent(
 	modifier: Modifier = Modifier,
 	popupInfoList: List<PopupInfo>,
-	darkTheme: Boolean
+	darkTheme: Boolean,
+	moveToPopupDetail: () -> Unit
 ) {
 	Box(
 		modifier = modifier.fillMaxSize()
+			.padding(vertical = 6.dp, horizontal = 16.dp)
 	) {
 		LazyVerticalGrid(
 			columns = GridCells.Fixed(2),
@@ -97,7 +99,9 @@ private fun HomePopupContent(
 					title = it.title,
 					date = it.date,
 					location = it.location
-				)
+				) {
+					moveToPopupDetail()
+				}
 			}
 		}
 	}

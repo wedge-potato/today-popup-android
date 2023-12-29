@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.wedge.todaypopup.core.ui.util.clickableSingle
 
 @Composable
 fun PopupCardView(
@@ -31,10 +32,14 @@ fun PopupCardView(
 	thumbnail: String,
 	title: String,
 	date: String,
-	location: String
+	location: String,
+	cardClick: () -> Unit = {}
 ) {
 	Column(
 		modifier = modifier
+			.clickableSingle {
+				cardClick()
+			}
 	) {
 		ThumbnailView(thumbnail)
 		Spacer(modifier = Modifier.height(8.dp))

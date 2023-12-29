@@ -10,6 +10,8 @@ sealed class TodayPopupScreens(
 
 	object Home : TodayPopupScreens("home")
 
+	object PopupDetail : TodayPopupScreens("popup/detail")
+
 	object Setting : TodayPopupScreens("setting")
 }
 
