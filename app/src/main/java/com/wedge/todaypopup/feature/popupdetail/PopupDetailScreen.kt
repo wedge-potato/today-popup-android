@@ -295,7 +295,7 @@ private fun PopupDetailTopBar(
 				.clickableSingle {
 					navigateUp()
 				},
-			painter = painterResource(id = R.drawable.ic_back),
+			painter = painterResource(id = R.drawable.ic_nav_back),
 			contentDescription = "ic_back",
 			colorFilter = ColorFilter.tint(if (darkTheme) Color.White else Color(0xFF111111))
 		)
