@@ -118,7 +118,7 @@ private fun HomeOptionRow(
 		verticalAlignment = Alignment.CenterVertically,
 		horizontalArrangement = Arrangement.SpaceBetween
 	) {
-		ClipButton(darkTheme = darkTheme)
+		ClipButton()
 		FilterText(darkTheme = darkTheme)
 	}
 }
@@ -160,10 +160,14 @@ private fun HomeTopBar(
 	Row(
 		modifier = Modifier
 			.fillMaxWidth()
-			.padding(vertical = 10.dp, horizontal = 14.dp),
-		horizontalArrangement = Arrangement.SpaceBetween,
+			.padding(vertical = 12.dp, horizontal = 16.dp),
 		verticalAlignment = Alignment.CenterVertically
 	) {
+		Image(
+			painter = painterResource(id = R.drawable.ic_logo),
+			contentDescription = "logo"
+		)
+		Spacer(modifier = Modifier.width(4.dp))
 		Text(
 			text = "홈",
 			style = TextStyle(
@@ -174,13 +178,14 @@ private fun HomeTopBar(
 				textAlign = TextAlign.Center,
 			)
 		)
+		Spacer(modifier = Modifier.weight(1f))
 		Image(
 			modifier = Modifier
 				.size(24.dp)
 				.clickableSingle {
 					navigateToSetting()
 				},
-			painter = painterResource(id = R.drawable.ic_setting_white),
+			painter = painterResource(id = R.drawable.ic_setting),
 			contentDescription = "ic_setting_white",
 			colorFilter = ColorFilter.tint(
 				color = if (darkTheme) Color(0xFFFAFAFA) else Color(0xFF131313)
