@@ -1,10 +1,10 @@
 package com.wedge.todaypopup.core.navigation
 
-import android.util.Log
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.wedge.drawingtoyou.core.navigation.navigator.TodayPopupNavigator
+import com.wedge.todaypopup.feature.filter.location.LocationFilterScreen
 import com.wedge.todaypopup.feature.home.HomeScreen
 import com.wedge.todaypopup.feature.popupdetail.PopupDetailScreen
 import com.wedge.todaypopup.feature.setting.SettingScreen
@@ -25,8 +25,12 @@ fun NavGraphBuilder.todayPopupHomeNavigation(
 	}
 
 	composable(route = TodayPopupScreens.Setting.name) {
-		Log.e("Test@@@", "Setting Composable")
 		SettingScreen(navigator = navigator)
 		selectedScreen(TodayPopupScreens.Setting.name)
+	}
+
+	composable(route = TodayPopupScreens.LocationFilter.name) {
+		LocationFilterScreen(navigator = navigator)
+		selectedScreen(TodayPopupScreens.LocationFilter.name)
 	}
 }
