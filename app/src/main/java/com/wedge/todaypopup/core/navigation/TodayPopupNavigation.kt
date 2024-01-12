@@ -7,6 +7,7 @@ import com.wedge.drawingtoyou.core.navigation.navigator.TodayPopupNavigator
 import com.wedge.todaypopup.feature.filter.location.LocationFilterScreen
 import com.wedge.todaypopup.feature.home.HomeScreen
 import com.wedge.todaypopup.feature.popupdetail.PopupDetailScreen
+import com.wedge.todaypopup.feature.service_inquire.ServiceInquireScreen
 import com.wedge.todaypopup.feature.setting.SettingScreen
 
 fun NavGraphBuilder.todayPopupHomeNavigation(
@@ -32,5 +33,10 @@ fun NavGraphBuilder.todayPopupHomeNavigation(
 	composable(route = TodayPopupScreens.LocationFilter.name) {
 		LocationFilterScreen(navigator = navigator)
 		selectedScreen(TodayPopupScreens.LocationFilter.name)
+	}
+
+	composable(route = TodayPopupScreens.ServiceInquire.name) {
+		ServiceInquireScreen(navigator = navigator)
+		selectedScreen(TodayPopupScreens.ServiceInquire.name)
 	}
 }

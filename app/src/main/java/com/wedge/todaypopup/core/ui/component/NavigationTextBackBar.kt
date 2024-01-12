@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
@@ -16,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wedge.todaypopup.R
 import com.wedge.todaypopup.core.ui.theme.Grey80
+import com.wedge.todaypopup.core.ui.theme.Subtitle1
 import com.wedge.todaypopup.core.ui.util.clickableSingle
 
 
@@ -29,7 +31,8 @@ fun NavigationTextBackBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp, horizontal = 16.dp)
+            .padding(vertical = 12.dp, horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             modifier = Modifier.clickableSingle { onBackPressed() },
@@ -40,7 +43,10 @@ fun NavigationTextBackBar(
 
         if (text.isNotEmpty()) {
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = text)
+            Text(
+                text = text,
+                style = Subtitle1
+            )
         }
     }
 }

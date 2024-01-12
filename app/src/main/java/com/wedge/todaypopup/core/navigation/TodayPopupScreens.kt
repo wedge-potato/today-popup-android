@@ -15,6 +15,8 @@ sealed class TodayPopupScreens(
 	object PopupDetail : TodayPopupScreens("popup/detail")
 
 	object Setting : TodayPopupScreens("setting")
+
+	object ServiceInquire : TodayPopupScreens("service/inquire")
 }
 
 private fun String.appendArguments(navArguments: List<NamedNavArgument>): String {

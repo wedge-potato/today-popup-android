@@ -27,7 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wedge.drawingtoyou.core.navigation.navigator.TodayPopupNavigator
 import com.wedge.todaypopup.R
+import com.wedge.todaypopup.core.navigation.TodayPopupScreens
 import com.wedge.todaypopup.core.navigation.navigator.TodayPopupNavigatorImpl
+import com.wedge.todaypopup.core.ui.theme.Grey80
+import com.wedge.todaypopup.core.ui.theme.Subtitle2
 import com.wedge.todaypopup.core.ui.util.clickableSingle
 
 @Composable
@@ -43,7 +46,10 @@ fun SettingScreen(
 		SettingTopBar(darkTheme = darkTheme) {
 			navigator.navigateUp()
 		}
-		SettingContent(darkTheme = darkTheme)
+		SettingContentView(darkTheme = darkTheme) { route ->
+			if (route.isEmpty()) return@SettingContentView
+			navigator.navigate(route)
+		}
 	}
 }
 
@@ -51,23 +57,26 @@ private data class SettingContent(
 	val title: String,
 	val route: String
 )
+
 @Composable
-private fun SettingContent(
-	darkTheme: Boolean
+private fun SettingContentView(
+	darkTheme: Boolean,
+	clickSettingContent: (route: String) -> Unit
 ) {
-	val contentList = listOf<SettingContent>(
+	val contentList = listOf(
 		SettingContent("팝업스토어 제보하기", ""),
-		SettingContent("문의하기" , "")
+		SettingContent("문의하기" , TodayPopupScreens.ServiceInquire.name)
 	)
 
 	LazyColumn(
-		modifier = Modifier.padding(horizontal = 16.dp, vertical = 20.dp),
+		modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
 		verticalArrangement = Arrangement.spacedBy(16.dp)
 	) {
 		items(items = contentList, key = { it.title }) {
 			SettingContentItem(
 				content = it,
-				darkTheme = darkTheme
+				darkTheme = darkTheme,
+				clickSettingContent = clickSettingContent
 			)
 		}
 	}
@@ -76,19 +85,19 @@ private fun SettingContent(
 @Composable
 private fun SettingContentItem(
 	content: SettingContent,
-	darkTheme: Boolean
+	darkTheme: Boolean,
+	clickSettingContent: (route: String) -> Unit
 ) {
 	Row(
 		modifier = Modifier.fillMaxWidth()
+			.clickableSingle { clickSettingContent(content.route) },
+		verticalAlignment = Alignment.CenterVertically
 	) {
 		Text(
+			modifier = Modifier.weight(1f),
 			text = content.title,
-			style = TextStyle(
-				fontSize = 16.sp,
-				lineHeight = 24.sp,
-				fontWeight = FontWeight.W500,
-				color = if(darkTheme) Color(0xFFFAFAFA) else Color(0xFF0B0B0B)
-			)
+			style = Subtitle2,
+			color = Grey80
 		)
 		Image(
 			modifier = Modifier.size(24.dp),
