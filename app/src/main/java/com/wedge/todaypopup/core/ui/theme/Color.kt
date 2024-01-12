@@ -26,6 +26,7 @@ val Coral70 = Color(0xFFF02E22)
 val Coral80 = Color(0xFFDE211D)
 val Coral90 = Color(0xFFD21715)
 
+val HyperLink = Color(0xFF489CFF)
 val Blue50 = Color(0xFF0073F9)
 val Red50 = Color(0xFFFF201E)
 val Yellow50 = Color(0xFFFFE500)
